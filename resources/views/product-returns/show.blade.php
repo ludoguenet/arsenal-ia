@@ -16,7 +16,14 @@
         <dd>{{ $productReturn->created_at->format('d/m/Y H:i') }}</dd>
     </dl>
 
+    <form action="{{ route('product-returns.triage', ['return' => $productReturn]) }}" method="POST">
+        @csrf
+        <input type="submit" value="Call the Agent for triage" class="bg-green-200 px-4 py-2 rounded cursor-pointer">
+    </form>
+
     <section class="flex flex-col gap-4 rounded-lg bg-white p-6 text-sm shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:bg-[#161615] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
+
+
         <h2 class="text-lg font-semibold">Triage</h2>
 
         <dl class="grid gap-4 sm:grid-cols-[12rem_1fr]">

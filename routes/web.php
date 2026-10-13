@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReturnController;
+use App\Http\Controllers\ReturnProductTriageAgentController;
 use App\Http\Controllers\Support\ProductReturnController as SupportProductReturnController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,7 @@ Route::get('/', function () {
 
 Route::get('products', [ProductController::class, 'index'])->name('products.list');
 
+Route::post('product-returns/triage/{return}', ReturnProductTriageAgentController::class)->name('product-returns.triage');
 Route::resource('product-returns', ProductReturnController::class)->only(['create', 'store', 'show']);
 
 Route::get('support/product-returns', [SupportProductReturnController::class, 'index'])->name('support.product-returns.index');
